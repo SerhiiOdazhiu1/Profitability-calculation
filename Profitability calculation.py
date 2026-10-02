@@ -26,12 +26,20 @@ def risk(profits, probabilities):
     print(f"Семіваріація: {SSV}")
     print(f"Коефіцієнт семіваріації: {CSV}")
 
+    return CSV
+
 X_A_prof = [80, 50, -20]
 X_A_prob = [0.2, 0.7, 0.1]
 X_B_prof = [300, 100, -100]
 X_B_prob = [0.2, 0.5, 0.3]
 
 print("Стара модель:\n")
-risk(X_A_prof, X_A_prob)
+csv_a = risk(X_A_prof, X_A_prob)
 print("\nНова модель:\n")
-risk(X_B_prof, X_B_prob)
+csv_b = risk(X_B_prof, X_B_prob)
+
+print("Висновок:\n")
+if csv_a > csv_b:
+    print("Нова модель не ризикована, запускаємо її в виробництво.")
+else:
+    print("Нова модель ризикована, не потрібно її запускати в виробництво.")
